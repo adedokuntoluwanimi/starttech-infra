@@ -156,7 +156,10 @@ data "aws_iam_policy_document" "infrastructure_github_trust" {
     condition {
       test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:${var.github_owner}/${var.infrastructure_repository}:*"]
+      values = [
+        "repo:${var.github_owner}/${var.infrastructure_repository}:*",
+        "repo:${var.github_owner}@*/${var.infrastructure_repository}@*:*",
+      ]
     }
   }
 }
@@ -213,7 +216,10 @@ data "aws_iam_policy_document" "application_github_trust" {
     condition {
       test     = "StringLike"
       variable = "token.actions.githubusercontent.com:sub"
-      values   = ["repo:${var.github_owner}/${var.application_repository}:*"]
+      values = [
+        "repo:${var.github_owner}/${var.application_repository}:*",
+        "repo:${var.github_owner}@*/${var.application_repository}@*:*",
+      ]
     }
   }
 }
