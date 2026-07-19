@@ -28,6 +28,7 @@ jobs:
         working-directory: terraform
     env:
       AWS_REGION: ${{ vars.AWS_REGION }}
+      TF_VAR_node_instance_types: ${{ vars.TF_VAR_NODE_INSTANCE_TYPES }}
       TF_IN_AUTOMATION: true
       TF_INPUT: false
     steps:
