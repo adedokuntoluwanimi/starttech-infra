@@ -127,9 +127,12 @@ data "tls_certificate" "github_actions" {
 }
 
 resource "aws_iam_openid_connect_provider" "github_actions" {
-  url             = "https://token.actions.githubusercontent.com"
-  client_id_list  = ["sts.amazonaws.com"]
-  thumbprint_list = [data.tls_certificate.github_actions.certificates[0].sha1_fingerprint]
+  url            = "https://token.actions.githubusercontent.com"
+  client_id_list = ["sts.amazonaws.com"]
+  thumbprint_list = distinct([
+    for certificate in data.tls_certificate.github_actions.certificates : certificate.sha1_fingerprint
+    if certificate.is_ca
+  ])
 
   tags = local.common_tags
 }
