@@ -1,0 +1,14 @@
+aws_region         = "eu-west-1"
+environment        = "production"
+vpc_cidr           = "10.0.0.0/16"
+availability_zones = ["eu-west-1a", "eu-west-1b"]
+cluster_version    = "1.34"
+
+node_instance_types = ["t3.medium"]
+desired_nodes       = 2
+minimum_nodes       = 2
+maximum_nodes       = 4
+
+github_owner             = "adedokuntoluwanimi"
+infrastructure_repository = "starttech-infra"
+application_repository    = "starttech-application"
