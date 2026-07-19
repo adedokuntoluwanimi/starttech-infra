@@ -10,8 +10,8 @@ variable "eks_worker_security_group_id" {
   type = string
 }
 
-variable "node_autoscaling_group_names" {
-  type = list(string)
+variable "node_autoscaling_group_name" {
+  type = string
 }
 
 variable "frontend_bucket_regional_domain_name" {

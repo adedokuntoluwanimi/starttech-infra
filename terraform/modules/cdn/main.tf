@@ -77,9 +77,7 @@ resource "aws_lb_target_group" "backend" {
 }
 
 resource "aws_autoscaling_attachment" "backend" {
-  for_each = toset(var.node_autoscaling_group_names)
-
-  autoscaling_group_name = each.value
+  autoscaling_group_name = var.node_autoscaling_group_name
   lb_target_group_arn    = aws_lb_target_group.backend.arn
 }
 

@@ -92,7 +92,7 @@ module "cdn" {
   vpc_id                               = module.networking.vpc_id
   public_subnet_ids                    = module.networking.public_subnet_ids
   eks_worker_security_group_id         = module.eks.cluster_security_group_id
-  node_autoscaling_group_names         = module.eks.node_autoscaling_group_names
+  node_autoscaling_group_name          = module.eks.node_autoscaling_group_name
   frontend_bucket_regional_domain_name = module.storage.frontend_bucket_regional_domain_name
   tags                                 = local.common_tags
 }

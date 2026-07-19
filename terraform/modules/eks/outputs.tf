@@ -22,6 +22,6 @@ output "node_group_name" {
   value = aws_eks_node_group.starttech_node_group.node_group_name
 }
 
-output "node_autoscaling_group_names" {
-  value = [for group in aws_eks_node_group.starttech_node_group.resources[0].autoscaling_groups : group.name]
+output "node_autoscaling_group_name" {
+  value = aws_eks_node_group.starttech_node_group.resources[0].autoscaling_groups[0].name
 }
